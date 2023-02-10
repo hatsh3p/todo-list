@@ -1,0 +1,4 @@
+I installed:
+- npm install pg --save
+- npm install express --save
+- npm install body-parser --save
