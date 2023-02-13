@@ -18,5 +18,5 @@ const pool = new Pool({
     database: "todo_tutorial"
 });
 ```
-2. Start server using ```node server/index.js```.
-3. Go to ```http://localhost:3000/``` to view the app.
+4. Start server using ```node server/index.js```.
+5. Go to ```http://localhost:3000/``` to view the app.
