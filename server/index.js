@@ -11,6 +11,15 @@ app.use(express.json());
 
 // ROUTES //
 
+// Display message on home page.
+app.get("/", async (req, res) => {
+    try {
+        res.end("<html><body><h1>Welcome to TODO list</h1></body></html>");
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 // Create a todo.
 app.post("/todos", async (req, res) => {
     try {
