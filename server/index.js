@@ -11,16 +11,57 @@ app.use(express.json());
 
 // ROUTES //
 
-// Display message on home page.
+/**
+ * Displays a message on the home page.
+ */
 app.get("/", async (req, res) => {
     try {
-        res.end("<html><body><h1>Welcome to TODO list</h1></body></html>");
+        res.end("Welcome to TODO list");
     } catch (err) {
         console.error(err.message);
     }
 })
 
-// Get all items in a list by list_id.
+/**
+ * Creates a TodoList.
+ */
+app.post("/lists", async (req, res) => {
+    try {
+        const { name } = req.body;
+        const newList = await pool.query("INSERT INTO Lists (name) VALUES($1) RETURNING *", [name]);
+        res.json(newList.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+/**
+ * Creates a TodoItem for a specific list.
+ */
+app.post("/lists/id/:list_id", async (req, res) => {
+    try {
+        const { description } = req.body;
+
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+/**
+ * Gets all of the TodoLists.
+ */
+app.get("/lists", async (req, res) => {
+    try {
+        const lists = await pool.query("SELECT * from lists");
+        res.json(lists.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+/**
+ * Get all TodoTtems in a TodoList by list_id.
+ */
 app.get("/lists/id/:list_id", async (req, res) => {
     try {
         const { list_id } = req.params;
@@ -31,7 +72,26 @@ app.get("/lists/id/:list_id", async (req, res) => {
     }
 })
 
-// Get an item by id.
+/**
+ * Get all TodoItems in a TodoList by list_name.
+ */
+app.get("/lists/name/:list_name", async (req, res) => {
+    try {
+        const { list_name } = req.params;
+        const items = await pool.query("SELECT i.id, i.list_id, i.description, i.completed, i.list_id FROM items i JOIN lists l ON i.list_id = l.id WHERE l.name = $1", [list_name]);
+        res.json(items.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+/**
+ * Updates a TodoItem and marks it as done.
+ */
+
+/**
+ * Get a TodoItem by item id.
+ */
 app.get("/items/id/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -42,20 +102,16 @@ app.get("/items/id/:id", async (req, res) => {
     }
 })
 
+/**
+ * Deletes a TodoItem.
+ */
 
-// Get all items in a list by list_name.
-app.get("/lists/name/:list_name", async (req, res) => {
-    try {
-        const { list_name } = req.params;
-        console.log(list_name);
-        const items = await pool.query("SELECT i.id, i.list_id, i.description, i.completed, i.list_id FROM items i JOIN lists l ON i.list_id = l.id WHERE l.name = $1", [list_name]);
-        res.json(items.rows);
-    } catch (err) {
-        console.error(err.message);
-    }
-})
+/**
+ * Deletes a TodoList.
+ */
 
 
+/*
 // Update a todo.
 app.put("/todos/:id", async (req, res) => {
     try {
@@ -81,8 +137,8 @@ app.delete("/todos/:id", async (req, res) => {
         console.log(err.message);
     }
 })
+*/
 
 app.listen(port, () => {
     console.log(`Server has started on port ${port}.`);
 });
-
