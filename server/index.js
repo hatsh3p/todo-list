@@ -20,39 +20,41 @@ app.get("/", async (req, res) => {
     }
 })
 
-// Create a todo.
-app.post("/todos", async (req, res) => {
+// Get all items in a list by list_id.
+app.get("/lists/id/:list_id", async (req, res) => {
     try {
-        const { description } = req.body;
-        const newTodo = await pool.query("INSERT INTO todo (description) VALUES($1) RETURNING *",
-            [description]
-        );
-        res.json(newTodo.rows[0]);
-    } catch (err) {
-        console.error(err.message);
-    }
-});
-
-// Get all todos.
-app.get("/todos", async (req, res) => {
-    try {
-        const allTodos = await pool.query("SELECT * FROM todo");
-        res.json(allTodos.rows);
+        const { list_id } = req.params;
+        const items = await pool.query("SELECT * FROM items WHERE list_id = $1", [list_id]);
+        res.json(items.rows);
     } catch (err) {
         console.error(err.message);
     }
 })
 
-// Get a todo.
-app.get("/todos/:id", async (req, res) => {
+// Get an item by id.
+app.get("/items/id/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const todo = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [id])
-        res.json(todo.rows[0])
+        const item = await pool.query("SELECT * FROM items WHERE id = $1", [id]);
+        res.json(item.rows[0]);
     } catch (err) {
         console.error(err.message);
     }
 })
+
+
+// Get all items in a list by list_name.
+app.get("/lists/name/:list_name", async (req, res) => {
+    try {
+        const { list_name } = req.params;
+        console.log(list_name);
+        const items = await pool.query("SELECT i.id, i.list_id, i.description, i.completed, i.list_id FROM items i JOIN lists l ON i.list_id = l.id WHERE l.name = $1", [list_name]);
+        res.json(items.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
 
 // Update a todo.
 app.put("/todos/:id", async (req, res) => {
@@ -80,7 +82,7 @@ app.delete("/todos/:id", async (req, res) => {
     }
 })
 
-
 app.listen(port, () => {
     console.log(`Server has started on port ${port}.`);
 });
+
