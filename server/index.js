@@ -36,6 +36,7 @@ app.post("/lists", async (req, res) => {
 })
 
 /**
+ * TODO: Need to complete this one.
  * Creates a TodoItem for a specific list.
  */
 app.post("/lists/id/:list_id", async (req, res) => {
@@ -88,6 +89,17 @@ app.get("/lists/name/:list_name", async (req, res) => {
 /**
  * Updates a TodoItem and marks it as done.
  */
+app.put("/items/id/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { description } = req.body;
+        const updateItem = await pool.query("UPDATE Items SET description = $1 WHERE id = $2", [description, id]
+        );
+        res.json("TodoItem was updated!");
+    } catch (err) {
+        console.error(err.message);
+    }
+})
 
 /**
  * Get a TodoItem by item id.
@@ -105,39 +117,32 @@ app.get("/items/id/:id", async (req, res) => {
 /**
  * Deletes a TodoItem.
  */
-
-/**
- * Deletes a TodoList.
- */
-
-
-/*
-// Update a todo.
-app.put("/todos/:id", async (req, res) => {
+app.delete("/items/id/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const { description } = req.body;
-        const updateTodo = await pool.query("UPDATE todo SET description = $1 WHERE todo_id = $2", [description, id]
-        );
-        res.json("Todo was updated!");
-    } catch (err) {
-        console.error(err.message);
-    }
-})
-
-// Delete a todo.
-app.delete("/todos/:id", async (req, res) => {
-    try {
-        const { id } = req.params;
-        const deleteTodo = await pool.query("DELETE FROM todo WHERE todo_id = $1", [
+        const deleteTodoItem = await pool.query("DELETE FROM items WHERE id = $1", [
             id
         ]);
-        res.json("Todo was deleted!");
+        res.json("TodoItem was deleted!");
     } catch (err) {
         console.log(err.message);
     }
 })
-*/
+
+/**
+ * TODO: FIX THIS.
+ * Deletes a TodoList.
+ */
+app.delete("/lists/id/:list_id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleteTodoItems = await pool.query("DELETE FROM Items where list_id = $1", [id]);
+        const deleteTodoList = await pool.query("DELETE FROM lists WHERE id = $1", [id]);
+        res.json("TodoItem was deleted!");
+    } catch (err) {
+        console.log(err.message);
+    }
+})
 
 app.listen(port, () => {
     console.log(`Server has started on port ${port}.`);

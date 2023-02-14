@@ -21,6 +21,10 @@ INSERT INTO Lists (name) VALUES ('hobbies');
 
 INSERT INTO Lists (name) VALUES ('home');
 
+INSERT INTO Lists (name) VALUES ('work');
+
+INSERT INTO Lists (name) VALUES ('dog');
+
 INSERT INTO Items (list_id, description)
 SELECT id, 'Book a flight.'
 FROM Lists
@@ -55,3 +59,13 @@ INSERT INTO Items (list_id, description)
 SELECT id, 'Add accent lighting to office.'
 FROM Lists
 WHERE name = 'home';
+
+INSERT INTO Items (list_id, description)
+SELECT id, 'Buy new toys.'
+FROM Lists
+WHERE name = 'dog';
+
+INSERT INTO Items (list_id, description)
+SELECT id, 'Go to the park for long leash training.'
+FROM Lists
+WHERE name = 'dog';
