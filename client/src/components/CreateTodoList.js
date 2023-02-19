@@ -1,14 +1,14 @@
 import React, { Fragment, useState } from "react";
 
-const InputTodo = () => {
-    const [description, setDescription] = useState("");
+const CreateTodoList = () => {
+    const [listName, setListName] = useState("");
 
     const onSubmitForm = async e => {
         e.preventDefault();
         try {
-            const body = { description };
+            const body = { name: listName };
             /* fetch() makes a GET request by default. */
-            const response = await fetch("http://localhost:3000/todos", {
+            const response = await fetch("http://localhost:3000/lists", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
@@ -22,14 +22,14 @@ const InputTodo = () => {
 
     return (
         <Fragment>
-            <h1 className="text-center mt-5">Pern Todo List</h1>
+            <h1 className="text-center mt-5">Todo Lists</h1>
             <form className="d-flex mt-5" onSubmit={onSubmitForm}>
                 <input
                     type="text"
-                    placeholder="add todo"
+                    placeholder="create a new list"
                     className="form-control"
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
+                    value={listName}
+                    onChange={e => setListName(e.target.value)}
                 />
                 <button className="btn btn-success">Add</button>
             </form>
@@ -37,4 +37,4 @@ const InputTodo = () => {
     );
 };
 
-export default InputTodo;
+export default CreateTodoList;

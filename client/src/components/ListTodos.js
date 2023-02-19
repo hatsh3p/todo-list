@@ -3,8 +3,32 @@ import EditTodo from "./EditTodo";
 
 const ListTodos = () => {
 
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodoLists, setTodos] = useState([]);
 
+    const getTodoLists = async () => {
+        try {
+            const response = await (fetch("http://localhost:3000/lists"));
+            const jsonData = await response.json();
+
+            setTodoLists(jsonData);
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
+
+    // NEED TO UPDATE FOR MULTIPLE LISTS
+    /*
+    const getTodos = async () => {
+        try {
+            const response = await (fetch("http://localhost:3000/todos"));
+            const jsonData = await response.json();
+
+            setTodos(jsonData);
+        } catch (err) {
+            console.error(err.message)
+        }
+    }
+    
     // Delete todo function.
 
     const deleteTodo = async (id) => {
@@ -18,20 +42,10 @@ const ListTodos = () => {
             console.error(err.message)
         }
     }
-
-    const getTodos = async () => {
-        try {
-            const response = await (fetch("http://localhost:3000/todos"));
-            const jsonData = await response.json();
-
-            setTodos(jsonData);
-        } catch (err) {
-            console.error(err.message)
-        }
-    }
-
+    */
     useEffect(() => {
-        getTodos();
+        //getTodos();
+        getTodoLists();
     }, []); /* Adding [] ensures that only one request is made. */
 
     return (
@@ -51,7 +65,7 @@ const ListTodos = () => {
                             <td>{todo.description}</td>
                             <td><EditTodo todo={todo} /></td>
                             <td><button className="btn btn-danger"
-                                onClick={() => deleteTodo(todo.todo_id)}>Delete</button></td>
+                            >Delete</button></td>
                         </tr>
                     )}
                 </tbody>
