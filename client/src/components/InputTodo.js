@@ -7,6 +7,7 @@ const InputTodo = () => {
         e.preventDefault();
         try {
             const body = { description };
+            /* fetch() makes a GET request by default. */
             const response = await fetch("http://localhost:3000/todos", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -14,7 +15,7 @@ const InputTodo = () => {
             });
 
             window.location = "/";
-
+            console.log(response);
         } catch (err) {
             console.error(err.message);
         }
