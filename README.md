@@ -19,5 +19,17 @@ TODO: Update these steps.
 - GET: Get all the TodoItem's in the TodoList
 - PUT:    Update a TodoItem and mark it as done
 - DELETE: Delete a TodoListItem (done)
-- DELETE: Delete a TodoList
+- DELETE: Delete a TodoList (done)
 
+# What I would do differently
+
+## Backend
+- Learn more about HTTP URL structure and update accordingly.
+
+## Frontend
+- Change the "Add Item" second bar where the user inputs a list id into a 
+dropdown with all of the list names.
+- Add page navigation and reorganize so that user can navigate to one page for 
+each list and view the items for that list only.
+- Change the "Items" table so that the status is a checkbox that can be checked 
+or unchecked.

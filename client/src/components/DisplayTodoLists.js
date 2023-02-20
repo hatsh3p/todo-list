@@ -1,6 +1,4 @@
 import React, { Fragment, useEffect, useState } from "react";
-import EditTodo from "./EditTodo";
-import DisplayTodoItems from "./DisplayTodoItems";
 
 const DisplayTodoLists = () => {
 
