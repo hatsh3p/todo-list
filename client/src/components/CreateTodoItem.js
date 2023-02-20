@@ -1,13 +1,13 @@
 import React, { Fragment, useState } from "react";
 
-const CreateTodoList = () => {
-    const [listName, setListName] = useState("");
+const CreateTodoItem = () => {
+    const [itemName, setItemName] = useState("");
 
     const onSubmitForm = async e => {
         try {
-            const body = { name: listName };
+            const body = { name: itemName };
             /* fetch() makes a GET request by default. */
-            const response = await fetch("http://localhost:3000/lists", {
+            const response = await fetch("http://localhost:3000/lists/id/:list_id", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
@@ -21,17 +21,25 @@ const CreateTodoList = () => {
 
     return (
         <Fragment>
-            <h1 className="text-center mt-5">Todo Lists</h1>
-            <h5 className="mt-5 text-center">Create New List</h5>
+            <h5 className="mt-5 text-center">Add to Existing List</h5>
             <form className="mt-2" onSubmit={onSubmitForm}>
                 <div class="row">
                     <div class="col">
                         <input
                             type="text"
-                            placeholder="list"
+                            placeholder="item"
                             className="form-control"
-                            value={listName}
-                            onChange={e => setListName(e.target.value)}
+                            value={itemName}
+                            onChange={e => setItemName(e.target.value)}
+                        />
+                    </div>
+                    <div class="col">
+                        <input
+                            type="text"
+                            placeholder="list name"
+                            className="form-control"
+                            value={itemName}
+                            onChange={e => setItemName(e.target.value)}
                         />
                     </div>
                     <div>
@@ -43,4 +51,4 @@ const CreateTodoList = () => {
     );
 };
 
-export default CreateTodoList;
+export default CreateTodoItem;

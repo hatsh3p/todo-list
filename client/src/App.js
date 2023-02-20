@@ -3,12 +3,15 @@ import './App.css';
 
 // Components //
 import CreateTodoList from "./components/CreateTodoList";
+import CreateTodoItem from "./components/CreateTodoItem";
 import ListTodos from "./components/ListTodos";
+
 
 function App() {
   return <Fragment>
     <div className="container">
       <CreateTodoList />
+      <CreateTodoItem />
       <ListTodos />
     </div>
   </Fragment>;
