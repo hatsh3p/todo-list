@@ -5,6 +5,8 @@ import './App.css';
 import CreateTodoList from "./components/CreateTodoList";
 import CreateTodoItem from "./components/CreateTodoItem";
 import ListTodos from "./components/ListTodos";
+import DisplayTodoLists from "./components/DisplayTodoLists";
+import DisplayTodoItems from "./components/DisplayTodoItems";
 
 
 function App() {
@@ -12,7 +14,8 @@ function App() {
     <div className="container">
       <CreateTodoList />
       <CreateTodoItem />
-      <ListTodos />
+      <DisplayTodoLists />
+      <DisplayTodoItems />
     </div>
   </Fragment>;
 }

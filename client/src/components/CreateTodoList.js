@@ -21,7 +21,7 @@ const CreateTodoList = () => {
 
     return (
         <Fragment>
-            <h1 className="text-center mt-5">Todo Lists</h1>
+            <h1 className="text-center mt-5">Todo App</h1>
             <h5 className="mt-5 text-center">Create New List</h5>
             <form className="mt-2" onSubmit={onSubmitForm}>
                 <div class="row">

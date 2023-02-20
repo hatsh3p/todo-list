@@ -65,6 +65,18 @@ app.get("/lists", async (req, res) => {
 })
 
 /**
+ * Get all TodoTtems.
+ */
+app.get("/items", async (req, res) => {
+    try {
+        const items = await pool.query("SELECT * FROM items");
+        res.json(items.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+/**
  * Get all TodoTtems in a TodoList by list_id.
  */
 app.get("/lists/id/:list_id", async (req, res) => {

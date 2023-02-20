@@ -2,12 +2,13 @@ import React, { Fragment, useState } from "react";
 
 const CreateTodoItem = () => {
     const [itemName, setItemName] = useState("");
+    const [listId, setListId] = useState("");
 
     const onSubmitForm = async e => {
         try {
-            const body = { name: itemName };
+            const body = { description: itemName };
             /* fetch() makes a GET request by default. */
-            const response = await fetch("http://localhost:3000/lists/id/:list_id", {
+            const response = await fetch(`http://localhost:3000/lists/id/${listId}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
@@ -21,7 +22,7 @@ const CreateTodoItem = () => {
 
     return (
         <Fragment>
-            <h5 className="mt-5 text-center">Add to Existing List</h5>
+            <h5 className="mt-5 text-center">Add Item</h5>
             <form className="mt-2" onSubmit={onSubmitForm}>
                 <div class="row">
                     <div class="col">
@@ -36,10 +37,10 @@ const CreateTodoItem = () => {
                     <div class="col">
                         <input
                             type="text"
-                            placeholder="list name"
+                            placeholder="list id"
                             className="form-control"
-                            value={itemName}
-                            onChange={e => setItemName(e.target.value)}
+                            value={listId}
+                            onChange={e => setListId(e.target.value)}
                         />
                     </div>
                     <div>
