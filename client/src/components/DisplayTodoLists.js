@@ -12,6 +12,7 @@ const DisplayTodoLists = () => {
                 method: "DELETE"
             });
             setTodoLists(todoLists.filter(todoList => todoList.id !== id));
+            window.location.reload(false); /* Not the best way to implement this but works */
         } catch (err) {
             console.log(err.message);
         }
