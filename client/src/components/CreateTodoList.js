@@ -24,8 +24,8 @@ const CreateTodoList = () => {
             <h1 className="text-center mt-5">Todo App</h1>
             <h5 className="mt-5 text-center">Create New List</h5>
             <form className="mt-2" onSubmit={onSubmitForm}>
-                <div class="row">
-                    <div class="col">
+                <div className="row">
+                    <div className="col">
                         <input
                             type="text"
                             placeholder="list"

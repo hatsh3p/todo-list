@@ -4,10 +4,8 @@ import './App.css';
 // Components //
 import CreateTodoList from "./components/CreateTodoList";
 import CreateTodoItem from "./components/CreateTodoItem";
-import ListTodos from "./components/ListTodos";
 import DisplayTodoLists from "./components/DisplayTodoLists";
 import DisplayTodoItems from "./components/DisplayTodoItems";
-
 
 function App() {
   return <Fragment>

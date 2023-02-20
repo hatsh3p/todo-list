@@ -24,8 +24,8 @@ const CreateTodoItem = () => {
         <Fragment>
             <h5 className="mt-5 text-center">Add Item</h5>
             <form className="mt-2" onSubmit={onSubmitForm}>
-                <div class="row">
-                    <div class="col">
+                <div className="row">
+                    <div className="col">
                         <input
                             type="text"
                             placeholder="item"
@@ -34,7 +34,7 @@ const CreateTodoItem = () => {
                             onChange={e => setItemName(e.target.value)}
                         />
                     </div>
-                    <div class="col">
+                    <div className="col">
                         <input
                             type="text"
                             placeholder="list id"
@@ -48,7 +48,7 @@ const CreateTodoItem = () => {
                     </div>
                 </div>
             </form>
-        </Fragment>
+        </Fragment >
     );
 };
 
