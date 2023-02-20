@@ -4,7 +4,6 @@ const CreateTodoList = () => {
     const [listName, setListName] = useState("");
 
     const onSubmitForm = async e => {
-        e.preventDefault();
         try {
             const body = { name: listName };
             /* fetch() makes a GET request by default. */
@@ -13,7 +12,7 @@ const CreateTodoList = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
             });
-
+            console.log(response);
             window.location = "/";
         } catch (err) {
             console.error(err.message);

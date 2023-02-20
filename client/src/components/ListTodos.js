@@ -3,46 +3,28 @@ import EditTodo from "./EditTodo";
 
 const ListTodos = () => {
 
-    const [todos, setTodoLists, setTodos] = useState([]);
+    const [todoLists, setTodoLists] = useState([]);
 
+    const deleteTodoList = async (id) => {
+        try {
+            const deleteTodoList = await fetch(`http://localhost:3000/lists/id/${id}`, {
+                method: "DELETE"
+            });
+            setTodoLists(todoLists.filter(todoList => todoList.id !== id));
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
     const getTodoLists = async () => {
         try {
             const response = await (fetch("http://localhost:3000/lists"));
             const jsonData = await response.json();
-
             setTodoLists(jsonData);
         } catch (err) {
             console.error(err.message);
         }
     }
 
-    // NEED TO UPDATE FOR MULTIPLE LISTS
-    /*
-    const getTodos = async () => {
-        try {
-            const response = await (fetch("http://localhost:3000/todos"));
-            const jsonData = await response.json();
-
-            setTodos(jsonData);
-        } catch (err) {
-            console.error(err.message)
-        }
-    }
-    
-    // Delete todo function.
-
-    const deleteTodo = async (id) => {
-        try {
-            const deleteTodo = await fetch(`http://localhost:3000/todos/${id}`, {
-                method: "DELETE"
-            });
-
-            setTodos(todos.filter(todo => todo.todo_id !== id));
-        } catch (err) {
-            console.error(err.message)
-        }
-    }
-    */
     useEffect(() => {
         //getTodos();
         getTodoLists();
@@ -54,18 +36,15 @@ const ListTodos = () => {
             <table className="table mt-5 text-center">
                 <thead>
                     <tr>
-                        <th>Description</th>
-                        <th>Edit</th>
+                        <th>List</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {todos.map(todo =>
-                        <tr key={todo.todo_id}>
-                            <td>{todo.description}</td>
-                            <td><EditTodo todo={todo} /></td>
-                            <td><button className="btn btn-danger"
-                            >Delete</button></td>
+                    {todoLists.map(todoList =>
+                        <tr key={todoList.id}>
+                            <td><button className="btn btn-primary">{todoList.name}</button></td>
+                            <td><button className="btn btn-danger" onClick={() => deleteTodoList(todoList.id)}>Delete</button></td>
                         </tr>
                     )}
                 </tbody>
