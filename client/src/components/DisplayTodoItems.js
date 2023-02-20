@@ -38,6 +38,7 @@ const DisplayTodoItems = () => {
                     <tr>
                         <th>Item</th>
                         <th>List</th>
+                        <th>Status </th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -47,6 +48,7 @@ const DisplayTodoItems = () => {
                         <tr key={todoItem.id}>
                             <td>{todoItem.description}</td>
                             <td>{todoItem.list_id}</td>
+                            <td>{Boolean.prototype.toString(todoItem.completed)}</td>
                             <td><button className="btn btn-warning">Edit</button></td>
                             <td><button className="btn btn-danger" onClick={() => deleteTodoItem(todoItem.id)}>Delete</button></td>
                         </tr>

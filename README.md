@@ -13,11 +13,11 @@ TODO: Update these steps.
 3. Go to ```http://localhost:3000/``` to view the app.
 
 ## Project Specifications
-- POST: Create a TodoList
+- POST: Create a TodoList (done)
 - GET: Get all of the TodoLists
-- POST: Create a TodoItem for a specific list
+- POST: Create a TodoItem for a specific list (done)
 - GET: Get all the TodoItem's in the TodoList
 - PUT:    Update a TodoItem and mark it as done
-- DELETE: Delete a TodoListItem
+- DELETE: Delete a TodoListItem (done)
 - DELETE: Delete a TodoList
 
