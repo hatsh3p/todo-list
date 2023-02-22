@@ -29,7 +29,7 @@ TODO: Update these steps.
 - [x] DELETE: Delete a TodoList 
 
 ## Frontend
-- Create UI components that allow the user to accomplish the same tasks as the
+Create UI components that allow the user to accomplish the same tasks as the
 backend.
 - [x] POST: Create a TodoList 
 - [ ] GET: Get all of the TodoLists
