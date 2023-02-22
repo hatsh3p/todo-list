@@ -1,4 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
+import UpdateTodoItem from "./UpdateTodoItem";
+import EditTodoItem from "./EditTodoItem";
 
 const DisplayTodoItems = () => {
 
@@ -14,6 +16,7 @@ const DisplayTodoItems = () => {
             console.log(err.message);
         }
     }
+
     const getTodoItems = async () => {
         try {
             const response = await (fetch("http://localhost:3000/items"));
@@ -47,8 +50,8 @@ const DisplayTodoItems = () => {
                         <tr key={todoItem.id}>
                             <td>{todoItem.description}</td>
                             <td>{todoItem.list_id}</td>
-                            <td>{Boolean.prototype.toString(todoItem.completed)}</td>
-                            <td><button className="btn btn-warning">Edit</button></td>
+                            <td><UpdateTodoItem todo={todoItem} /></td>
+                            <td><EditTodoItem todo={todoItem} /></td>
                             <td><button className="btn btn-danger" onClick={() => deleteTodoItem(todoItem.id)}>Delete</button></td>
                         </tr>
                     )}

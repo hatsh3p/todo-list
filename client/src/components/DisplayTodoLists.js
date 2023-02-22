@@ -44,7 +44,7 @@ const DisplayTodoLists = () => {
                 <tbody>
                     {todoLists.map(todoList =>
                         <tr key={todoList.id}>
-                            <td><button className="btn btn-primary">{todoList.name}</button></td>
+                            <td><button className="btn btn-primary disabled">{todoList.name}</button></td>
                             <td>{todoList.id}</td>
                             <td><button className="btn btn-danger" onClick={() => deleteTodoList(todoList.id)}>Delete</button></td>
                         </tr>

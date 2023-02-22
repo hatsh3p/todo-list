@@ -12,8 +12,8 @@ TODO: Update these steps.
 
 1. Run ```npm install``` to install dependencies.
 2. Start postgres. 
-2. Start server using ```node server/index.js```.
-3. Go to ```http://localhost:3000/``` to view the app.
+3. Start server using ```node server/index.js``` or nodemon.
+4. Start fontend client using ```npm start```.
 
 <br />
 
@@ -35,7 +35,7 @@ backend.
 - [ ] GET: Get all of the TodoLists
 - [x] POST: Create a TodoItem for a specific list 
 - [ ] GET: Get all the TodoItem's in the TodoList
-- [ ] PUT:    Update a TodoItem and mark it as done
+- [x] PUT:    Update a TodoItem and mark it as done
 - [x] DELETE: Delete a TodoListItem 
 - [x] DELETE: Delete a TodoList 
 

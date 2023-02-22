@@ -1,32 +1,30 @@
 import React, { Fragment, useEffect, useState } from "react";
 
-const UpdateTodoItem = ({ todo }) => {
-    const [isCompleted, setIsCompleted] = useState(todo);
+const EditTodoItem = ({ todo }) => {
+    const [description, setDescription] = useState(todo);
 
-    const updateIsCompleted = async () => {
+    const updateDescription = async () => {
         try {
-            const body = { isCompleted };
+            const body = { isCompleted: description };
             const response = await fetch(`http://localhost:3000/items/id/${todo.id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
             });
-            window.location.reload(false);
-            //window.location = "/";
         } catch (err) {
             console.error(err.message)
         }
     }
 
     useEffect(() => {
-        setIsCompleted();
+        setDescription();
     }, []);
 
     return (
         <Fragment>
-            <button className="btn btn-secondary" onClick={() => updateIsCompleted(todo)}>{String(todo.completed)}</button>
+            <button className="btn btn-warning disabled" onClick={() => updateDescription(todo)}>Edit</button>
         </Fragment>
     );
 };
 
-export default UpdateTodoItem;
+export default EditTodoItem;
