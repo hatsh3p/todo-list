@@ -2,14 +2,18 @@ import React, { Fragment } from "react";
 import './App.css';
 
 // Components //
-import InputTodo from "./components/InputTodo";
-import ListTodos from "./components/ListTodos";
+import CreateTodoList from "./components/CreateTodoList";
+import CreateTodoItem from "./components/CreateTodoItem";
+import DisplayTodoLists from "./components/DisplayTodoLists";
+import DisplayTodoItems from "./components/DisplayTodoItems";
 
 function App() {
   return <Fragment>
     <div className="container">
-      <InputTodo />
-      <ListTodos />
+      <CreateTodoList />
+      <CreateTodoItem />
+      <DisplayTodoLists />
+      <DisplayTodoItems />
     </div>
   </Fragment>;
 }

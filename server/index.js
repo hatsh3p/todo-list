@@ -65,6 +65,18 @@ app.get("/lists", async (req, res) => {
 })
 
 /**
+ * Get all TodoTtems.
+ */
+app.get("/items", async (req, res) => {
+    try {
+        const items = await pool.query("SELECT * FROM items");
+        res.json(items.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+/**
  * Get all TodoTtems in a TodoList by list_id.
  */
 app.get("/lists/id/:list_id", async (req, res) => {
@@ -93,11 +105,25 @@ app.get("/lists/name/:list_name", async (req, res) => {
 /**
  * Updates a TodoItem and marks it as done.
  */
-app.put("/items/id/:id", async (req, res) => {
+app.put("/items/done/:id", async (req, res) => {
     try {
         const { id } = req.params;
         const updateItem = await pool.query("UPDATE Items SET completed = true WHERE id = $1", [id]);
         res.json("TodoItem was marked done!");
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+/**
+ * Updates a TodoItem description.
+ */
+app.put("/items/update/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { description } = req.body;
+        const updateItem = await pool.query("UPDATE Items SET description = $1 WHERE id = $2", [description, id]);
+        res.json("TodoItem description was updated!");
     } catch (err) {
         console.error(err.message);
     }
