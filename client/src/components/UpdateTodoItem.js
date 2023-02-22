@@ -6,7 +6,7 @@ const UpdateTodoItem = ({ todo }) => {
     const updateIsCompleted = async () => {
         try {
             const body = { isCompleted };
-            const response = await fetch(`http://localhost:3000/items/id/${todo.id}`, {
+            const response = await fetch(`http://localhost:3000/items/done/${todo.id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
