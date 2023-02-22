@@ -12,7 +12,6 @@ const UpdateTodoItem = ({ todo }) => {
                 body: JSON.stringify(body)
             });
             window.location.reload(false);
-            //window.location = "/";
         } catch (err) {
             console.error(err.message)
         }
