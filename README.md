@@ -9,9 +9,17 @@ https://www.youtube.com/watch?v=ldYcgPKEZC8
 
 # To run: 
 1. Run ```npm install``` to install dependencies.
-2. Start postgres ```psql -U postgres```.
+- cors
+- db
+- express
+- pg
+- react-dom
+- react
+- create-react-app
+2. Start postgres ```psql -U postgres``` and create database using server/database.sql.
 3. Start server using ```node server/index.js``` or nodemon.
 4. Start fontend client using ```npm start```.
+5. Install and run Postman to simulate different requests.
 
 <br />
 
