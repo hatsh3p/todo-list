@@ -1,3 +1,10 @@
+/** 
+  * DisplayTodoLists.js
+  * 
+  * Displays each TodoList, its list id, and a delete button.
+  * Contains the code to delete a list.
+ */
+
 import React, { Fragment, useEffect, useState } from "react";
 
 const DisplayTodoLists = () => {

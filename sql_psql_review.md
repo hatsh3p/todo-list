@@ -3,6 +3,8 @@
 ## Launch postgres in MacOS terminal
 ```psql - U postgres```
 
+<br />
+
 ## Common psql commands
 |Command | What it does |
 |-------|-----------|
@@ -12,6 +14,8 @@
 |\d table_name | Describe a table |
 |\q | Exit psql shell |
 
+<br />
+
 ## Common SQL commands
 | Command | 
 | --------| 
@@ -19,3 +23,5 @@
 | DROP DATABASE name |
 | CREATE TABLE table_name(details) |
 | DROP TABLE table_name |
+
+<br />

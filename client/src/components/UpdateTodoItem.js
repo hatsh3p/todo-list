@@ -1,3 +1,8 @@
+/** 
+  * UpdateTodoItem.js
+  * 
+  * Updates a TodoItem's status so that it is marked complete.
+ */
 import React, { Fragment, useEffect, useState } from "react";
 
 const UpdateTodoItem = ({ todo }) => {

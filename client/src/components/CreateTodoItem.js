@@ -1,3 +1,10 @@
+/** 
+  * CreateTodoItem.js
+  * 
+  * Creates a TodoItem and add it to a specific list.
+  * 
+ */
+
 import React, { Fragment, useState } from "react";
 
 const CreateTodoItem = () => {

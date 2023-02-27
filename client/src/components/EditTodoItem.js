@@ -1,3 +1,10 @@
+/** 
+  * EditTodoItem.js
+  * 
+  * Edits a TodoItem description in a modal.
+  * This code is not working as intended.
+ */
+
 import React, { Fragment, useEffect, useState, } from "react";
 
 const EditTodoItem = ({ todo }) => {

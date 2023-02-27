@@ -1,3 +1,11 @@
+/** 
+  * DisplayTodoItems.js
+  * 
+  * Displays each TodoItem, the list id associated with it, its status, an
+  * edit button, and a delete button. 
+  * Contains the code for deleting a TodoItem.
+ */
+
 import React, { Fragment, useEffect, useState } from "react";
 import UpdateTodoItem from "./UpdateTodoItem";
 import EditTodoItem from "./EditTodoItem";
