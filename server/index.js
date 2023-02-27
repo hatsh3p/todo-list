@@ -1,7 +1,18 @@
-const express = require("express");
-const app = express();
+/** 
+ * index.js
+ * 
+ * index.js is the first file that runs. Think of it as main.
+ * 
+ * Dependencies: 
+ *      - express
+ *      - cors 
+ *      - db
+ */
+
 const port = 3000;
+const express = require("express");
 const cors = require("cors");
+const app = express();
 const pool = require("./db");
 
 // Middleware
