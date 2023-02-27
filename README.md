@@ -16,10 +16,11 @@ https://www.youtube.com/watch?v=ldYcgPKEZC8
 - react-dom
 - react
 - create-react-app
-2. Start postgres ```psql -U postgres``` and create database using server/database.sql.
-3. Start server using ```node server/index.js``` or nodemon.
-4. Start fontend client using ```npm start```.
-5. Install and run Postman to simulate different requests.
+2. Create database using server/database.sql.
+3. Start postgres ```psql -U postgres```. 
+4. Start server by ```cd client``` then ```node index.js``` or nodemon.
+5. Start frontend client by ```cd server ``` then ```npm start```.
+6. Install and run Postman to simulate different requests.
 
 <br />
 
